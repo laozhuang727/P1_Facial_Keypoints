@@ -10,7 +10,10 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+<<<<<<< HEAD
 env/
+=======
+>>>>>>> 3eaaa3968d39d6e14e5abeda852b16cad443ddd9
 build/
 develop-eggs/
 dist/
@@ -26,6 +29,10 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+<<<<<<< HEAD
+=======
+MANIFEST
+>>>>>>> 3eaaa3968d39d6e14e5abeda852b16cad443ddd9
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -45,8 +52,14 @@ htmlcov/
 .cache
 nosetests.xml
 coverage.xml
+<<<<<<< HEAD
 *,cover
 .hypothesis/
+=======
+*.cover
+.hypothesis/
+.pytest_cache/
+>>>>>>> 3eaaa3968d39d6e14e5abeda852b16cad443ddd9
 
 # Translations
 *.mo
@@ -55,6 +68,10 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+<<<<<<< HEAD
+=======
+db.sqlite3
+>>>>>>> 3eaaa3968d39d6e14e5abeda852b16cad443ddd9
 
 # Flask stuff:
 instance/
@@ -81,6 +98,7 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
+<<<<<<< HEAD
 # dotenv
 .env
 
@@ -91,12 +109,46 @@ ENV/
 
 # Spyder project settings
 .spyderproject
+=======
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+>>>>>>> 3eaaa3968d39d6e14e5abeda852b16cad443ddd9
 
 # Rope project settings
 .ropeproject
 
+<<<<<<< HEAD
 .gitignore
 将删除 .idea/
 将删除 __pycache__/
 将删除 saved_models/keypoints_model_1.pt
 .idea/
+=======
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+
+/.ipynb_checkpoints/
+/.idea/*
+将删除 .DS_Store
+将删除 .idea/P1_Facial_Keypoints.iml
+将删除 .idea/inspectionProfiles/
+将删除 .idea/modules.xml
+将删除 .idea/other.xml
+将删除 .idea/workspace.xml
+/.ipynb_checkpoints/2. Define the Network Architecture-checkpoint.ipynb
+.DS_Store
+.gitignore
+>>>>>>> 3eaaa3968d39d6e14e5abeda852b16cad443ddd9
