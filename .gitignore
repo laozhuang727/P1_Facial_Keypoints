@@ -115,4 +115,4 @@ venv.bak/
 将删除 .idea/workspace.xml
 /.ipynb_checkpoints/2. Define the Network Architecture-checkpoint.ipynb
 .DS_Store
-.gitignore
+.idea
