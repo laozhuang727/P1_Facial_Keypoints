@@ -38,35 +38,24 @@ class Net(nn.Module):
         # the output tensor will have dimensions: (64, 108, 108)
         # after another pool layer this becomes (64, 54, 54);  no need to rounded down
         self.conv2 = nn.Conv2d(32, 64, 3)
-        self.dropout2 = nn.Dropout(p=0.3)
+        self.dropout2 = nn.Dropout(p=0.5)
 
-        # third conv layer: 64 inputs, 128 outputs, 2x2 conv
+        # second conv layer: 64 inputs, 128 outputs, 2x2 conv
         ## output size = (W-F)/S +1 = (54-2)/1 +1 = 53
         # the output tensor will have dimensions: (128, 53, 53)
         # after another pool layer this becomes (128, 26, 26);  26.5 rounded down
         self.conv3 = nn.Conv2d(64, 128, 2)
-        self.dropout3 = nn.Dropout(p=0.3)
+        self.dropout3 = nn.Dropout(p=0.5)
 
         # 128 outputs * the 2*2 filtered/pooled map size
         # self.fc1 = nn.Linear(128 * 26 * 26, 272)
-        self.fc1 = nn.Linear(128 * 26 * 26, 3072)
+        self.fc1 = nn.Linear(128 * 26 * 26, 272)
+
+
         self.fc1_drop = nn.Dropout(p=0.4)
 
-        self.fc2 = nn.Linear(3072, 512)
-        self.fc2_drop = nn.Dropout(p=0.4)
-
-
         # finally, create 136 output channels (for the 136 classes)
-        self.fc3 = nn.Linear(512, 136)
-
-        # xavier initialization
-        for m in self.modules():
-            if isinstance(m, nn.Conv2d):
-                I.xavier_uniform_(m.weight.data)
-                I.constant_(m.bias.data, 0.1)
-            elif isinstance(m, nn.Linear):
-                I.kaiming_uniform_(m.weight.data)
-                I.constant_(m.bias.data, 0.1)
+        self.fc2 = nn.Linear(272, 136)
 
         ## Note that among the layers to add, consider including:
         # maxpooling layers, multiple conv layers, fully-connected layers, and other layers (such as dropout or batch normalization) to avoid overfitting
@@ -83,7 +72,6 @@ class Net(nn.Module):
         x = self.pool(F.relu(self.conv3(x)))
         x = self.dropout3(x)
 
-
         # prep for linear layer
         # this line of code is the equivalent of Flatten in Keras
         x = x.view(x.size(0), -1)
@@ -91,9 +79,6 @@ class Net(nn.Module):
         x = F.relu(self.fc1(x))
         x = self.fc1_drop(x)
         x = self.fc2(x)
-        x = self.fc2_drop(x)
-        x = self.fc3(x)
-
 
         # a modified x, having gone through all the layers of your model, should be returned
         return x
